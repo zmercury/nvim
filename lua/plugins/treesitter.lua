@@ -1,59 +1,21 @@
 return {
-	{ "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
-
 	{
 		"nvim-treesitter/nvim-treesitter",
-		opts = {
-			ensure_installed = {
-				"cmake",
-				"cpp",
-				"css",
-				"gitignore",
-				"go",
-				"http",
-				"scss",
-			},
-
-			-- matchup = {
-			-- 	enable = true,
-			-- },
-
-			-- https://github.com/nvim-treesitter/playground#query-linter
-			query_linter = {
-				enable = true,
-				use_virtual_text = true,
-				lint_events = { "BufWrite", "CursorHold" },
-			},
-
-			playground = {
-				enable = true,
-				disable = {},
-				updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-				persist_queries = true, -- Whether the query persists across vim sessions
-				keybindings = {
-					toggle_query_editor = "o",
-					toggle_hl_groups = "i",
-					toggle_injected_languages = "t",
-					toggle_anonymous_nodes = "a",
-					toggle_language_display = "I",
-					focus_language = "f",
-					unfocus_language = "F",
-					update = "R",
-					goto_node = "<cr>",
-					show_help = "?",
-				},
-			},
-		},
-		config = function(_, opts)
-			require("nvim-treesitter.configs").setup(opts)
-
-			-- MDX
-			vim.filetype.add({
-				extension = {
-					mdx = "mdx",
-				},
-			})
-			vim.treesitter.language.register("markdown", "mdx")
+		opts = function(_, opts)
+			-- Disable auto-install completely
+			opts.auto_install = false
+			
+			-- Clear any ensure_installed from LazyVim or language extras
+			opts.ensure_installed = {}
+			
+			-- Keep syntax highlighting enabled for already installed parsers
+			opts.highlight = opts.highlight or {}
+			opts.highlight.enable = true
+			
+			opts.indent = opts.indent or {}
+			opts.indent.enable = true
+			
+			return opts
 		end,
 	},
 }
