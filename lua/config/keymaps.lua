@@ -89,6 +89,31 @@ keymap.set("n", "$$", "$A", opts)
 keymap.set("i", "$$", "<ESC>A", opts)
 keymap.set("n", "<leader>c", "0wi//<Esc>", opts)
 
+-- markdown preview
+vim.keymap.set("n", "<leader>mp", function()
+	vim.cmd("vert rightbelow split")
+	vim.cmd("terminal cmd.exe /k glow " .. vim.fn.expand("%"))
+end, { desc = "Markdown preview with Glow" })
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+	pattern = "*.md",
+	callback = function()
+		for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+			if vim.bo[buf].buftype == "terminal" then
+				local name = vim.api.nvim_buf_get_name(buf)
+				if name:match("glow") then
+					-- send commands to the terminal
+					local job = vim.b[buf].terminal_job_id
+					if job then
+						vim.fn.chansend(job, "cls\r")
+						vim.fn.chansend(job, "glow " .. vim.fn.expand("%") .. "\r")
+					end
+				end
+			end
+		end
+	end,
+})
+
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
