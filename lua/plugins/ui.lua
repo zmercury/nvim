@@ -154,56 +154,12 @@ return {
 
 			-- Define the custom theme with all required sections
 			opts.options = opts.options or {}
-			opts.options.theme = {
-				normal = {
-					a = { bg = "#06d6a0", fg = "#ffffff" }, -- Mode (unchanged)
-					b = { bg = "#1e2f27", fg = "#ffffff" }, -- Dark muted green
-					c = { bg = "#1e2f27", fg = "#ffffff" },
-					x = { bg = "#1e2f27", fg = "#ffffff" },
-					y = { bg = "#1e2f27", fg = "#ffffff" },
-					z = { bg = "#06d6a0", fg = "#ffffff" }, -- Clock (unchanged)
-				},
-				insert = {
-					a = { bg = "#ef476f", fg = "#ffffff" }, -- Unchanged
-					b = { bg = "#1e2f27", fg = "#ffffff" },
-					c = { bg = "#1e2f27", fg = "#ffffff" },
-					x = { bg = "#1e2f27", fg = "#ffffff" },
-					y = { bg = "#1e2f27", fg = "#ffffff" },
-					z = { bg = "#ef476f", fg = "#ffffff" }, -- Unchanged
-				},
-				visual = {
-					a = { bg = "#ffd166", fg = "#000000" }, -- Unchanged
-					b = { bg = "#1e2f27", fg = "#ffffff" },
-					c = { bg = "#1e2f27", fg = "#ffffff" },
-					x = { bg = "#1e2f27", fg = "#ffffff" },
-					y = { bg = "#1e2f27", fg = "#ffffff" },
-					z = { bg = "#ffd166", fg = "#000000" }, -- Unchanged
-				},
-				replace = {
-					a = { bg = "#118ab2", fg = "#ffffff" }, -- Unchanged
-					b = { bg = "#1e2f27", fg = "#ffffff" },
-					c = { bg = "#1e2f27", fg = "#ffffff" },
-					x = { bg = "#1e2f27", fg = "#ffffff" },
-					y = { bg = "#1e2f27", fg = "#ffffff" },
-					z = { bg = "#118ab2", fg = "#ffffff" }, -- Unchanged
-				},
-				command = {
-					a = { bg = "#06d6a0", fg = "#ffffff" }, -- Unchanged
-					b = { bg = "#1e2f27", fg = "#ffffff" },
-					c = { bg = "#1e2f27", fg = "#ffffff" },
-					x = { bg = "#1e2f27", fg = "#ffffff" },
-					y = { bg = "#1e2f27", fg = "#ffffff" },
-					z = { bg = "#06d6a0", fg = "#ffffff" }, -- Unchanged
-				},
-				inactive = {
-					a = { bg = "#2c4038", fg = "#ffffff" }, -- Slightly lighter dark shade
-					b = { bg = "#2c4038", fg = "#ffffff" },
-					c = { bg = "#2c4038", fg = "#ffffff" },
-					x = { bg = "#2c4038", fg = "#ffffff" },
-					y = { bg = "#2c4038", fg = "#ffffff" },
-					z = { bg = "#2c4038", fg = "#ffffff" },
-				},
-			}
+			-- Define the custom theme with all required sections
+			opts.options = opts.options or {}
+			-- Change "themes.yellow" to "themes.green" to switch themes
+			local theme = require("themes.yellow")
+			theme.setup()
+			opts.options.theme = theme.lualine
 
 			return opts
 		end,
