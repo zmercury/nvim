@@ -11,3 +11,4 @@ state.yml
 lazy-lock.json
 lazyvim.json
 stylua.toml
+.neoconf.json
