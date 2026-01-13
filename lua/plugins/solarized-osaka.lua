@@ -15,7 +15,7 @@ return {
         floats = "transparent",
       },
       sidebars = { "qf", "vista_kind", "terminal", "packer" },
-      day_brightness = 0.4,
+      day_brightness = 0.2,
       hide_inactive_statusline = true,
       dim_inactive = true,
       lualine_bold = true,
