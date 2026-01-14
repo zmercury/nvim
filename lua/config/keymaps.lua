@@ -6,3 +6,4 @@
 -- This opens the netrw explorer for the current directory
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex, { desc = "File Explorer (netrw)" })
 vim.keymap.set("n", "$$", "$A")
+vim.keymap.set("n", "<C-a>", "ggVG", { noremap = true, silent = true })
