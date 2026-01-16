@@ -15,13 +15,20 @@ return {
         floats = "transparent",
       },
       sidebars = { "qf", "vista_kind", "terminal", "packer" },
-      day_brightness = 0.2,
-      hide_inactive_statusline = true,
+      day_brightness = 0.4,
+      hide_inactive_statusline = false,
       dim_inactive = true,
-      lualine_bold = true,
+      lualine_bold = false,
 
       -- Gruvbox-like yellowish highlights for selections, search, etc.
-      on_colors = function(colors) end,
+      on_colors = function(colors)
+        colors.bg = "#282828"
+        colors.bg_highlight = "#3c3836"
+        colors.base04 = "#282828"
+        colors.base03 = "#3c3836"
+        colors.base02 = "#504945"
+        colors.fg = "#ebdbb2"
+      end,
 
       ---@param highlights Highlights
       ---@param colors ColorScheme
