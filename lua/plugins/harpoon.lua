@@ -8,14 +8,14 @@ return {
         false,
       },
       {
-        "<leader>h",
+        "<leader>a",
         function()
           require("harpoon"):list():add()
         end,
         desc = "Harpoon File",
       },
       {
-        "<leader>hh",
+        "<leader>h",
         function()
           local harpoon = require("harpoon")
           harpoon.ui:toggle_quick_menu(harpoon:list())
